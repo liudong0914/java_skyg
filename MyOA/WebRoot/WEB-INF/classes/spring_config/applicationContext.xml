@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<import resource="applicationContext-bean.xml" />
+	<!-- JDBC参数配置 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		lazy-init="true">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:/spring_config/resources.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- 设置JDBC驱动名称 -->
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<!-- 设置JDBC连接URL -->
+		<property name="url" value="${jdbc.url}" />
+		<!-- 设置数据库用户名 -->
+		<property name="username" value="${jdbc.username}" />
+		<!-- 设置数据库密码 -->
+		<property name="password" value="${jdbc.password}" />
+		<!--
+			设置连接池初始值 <property name="initialSize" value="5" /> 设置连接池最大值 <property
+			name="maxActive" value="100" /> 设置连接池最小空闲值 <property name="minIdle"
+			value="20" /> 设置连接池最大空闲值 <property name="maxIdle" value="50" />
+		-->
+	</bean>
+	<!--             使用SqlSessionFactoryBean工厂产生SqlSession对象，方便后期注入Dao         -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!--
+			<property name="configLocation" value="classpath:hibernate.cfg.xml">
+			</property>
+		-->
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:/com/chen/entity/*.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+			</props>
+		</property>
+	</bean>
+			<!--================================= 事务控制相关	=============================================-->
+	
+	<!--配置事物   需要 sessionFactory的支持 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:advice id="transAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="list*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="find*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- aop:config:相当于ProxyFactoryBean 生成目标的代理类-->
+	<!-- * com.myoa.service.*.*(..) -->
+	<!-- 返回值 包.类.方法(参数)-->
+	<aop:config>
+		<!-- 切点 -->
+		<aop:pointcut id="bizMethod" expression="execution(* com.chen.service.*.*.*(..))" />
+		<!-- 装配器 -->
+		<aop:advisor pointcut-ref="bizMethod" advice-ref="transAdvice" />
+	</aop:config>
+
+</beans>

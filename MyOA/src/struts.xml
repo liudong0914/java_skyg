@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 资源文件 --><!--
+	<constant name="struts.custom.i18n.resources" value="message" />
+	--><!-- 重新加载配置文件 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 显示更新详细信息 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 自动加载无需启动服务 -->
+	<constant name="struts.convention.classes.reload" value="true" />
+	<!-- 乱码问题 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 设置结果页面路径 -->
+	<constant name="struts.convention.result.path" value="/WEB-INF/pages" />
+	<!-- 设置Convention搜索包 -->
+	<constant name="struts.convention.package.locators" value="action" />
+	<!-- Actin类名路径分割 -->
+	<constant name="struts.convention.action.name.separator" value="_" />
+	<!-- 配置使用Spring管理Action -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 充许ognl静态调用 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<package name="myoa" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="authInterceptor" class="com.chen.interceptor.AuthInterceptor"/>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="authInterceptor"/>
+			</interceptor-stack>
+		</interceptors>		
+		<default-interceptor-ref name="myStack"/>
+		<global-results>
+			<result name="login" type="redirect">/sys/main!login.action</result>
+				<result name="err" type="dispatcher">/WEB-INF/pages/common/auth_errpage.jsp</result>
+		</global-results>
+	
+
+	<action name="file_info" class="com.chen.action.file.FileInfoAction">
+		<result name="ok" type="stream">
+			<param name="inputName">downloadFile</param>
+			<param name="bufferSize">1024</param>
+		</result>
+	</action>
+   </package>
+   
+   
+   <package name="jFreeChartDemonstration" extends="struts-default"      
+     namespace="/jfreechart">    
+       <result-types>       
+            <result-type name="chart" class="org.apache.struts2.dispatcher.ChartResult">
+            </result-type>        
+            </result-types>     
+              
+               <action name="loginjfAction" class="com.chen.action.jfreechart.LoginjfAction">            
+                 <result type="chart">               
+                      <param name="width">600</param>         
+             <param name="height">450</param>         
+                </result>   
+                     </action>  
+                       </package>
+</struts>    

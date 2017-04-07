@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="datasource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<!-- value>jdbc:mysql://localhost:3306/</value -->
+			<value>jdbc:mysql://127.0.0.1:3306/myoa?useUnicode=true&amp;characterEncoding=UTF-8</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="datasource">
+		</property>	
+		<property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+                </props>
+                </property>
+      </bean>
+            <!-- ================================= 事务控制相关 ============================================= -->
+   	<!--配置事物   需要 sessionFactory的支持 -->
+
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory" ></property>
+	</bean>
+	<tx:advice id="transAdvice" transaction-manager="txManager"> 
+	<tx:attributes>
+	 <tx:method name="get*" read-only="true" propagation="REQUIRED"/> 
+	<tx:method name="list*" read-only="true" propagation="REQUIRED"/> 
+	<tx:method name="find*" read-only="true" propagation="REQUIRED"/> 
+	<tx:method name="*" propagation="REQUIRED"/> 
+	</tx:attributes> 
+	</tx:advice> 
+<!-- aop:config:相当于ProxyFactoryBean 生成目标的代理类-->
+<!-- * com.service.service.*.*(..) -->
+<!-- 返回值 包.类.方法(参数)-->
+ <aop:config> 
+<!-- 切点 -->
+ <aop:pointcut id="bizMethod" expression="execution(* com.chen.entity.*.*(..))"/> 
+<!-- 装配器 -->
+ <aop:advisor pointcut-ref="bizMethod" advice-ref="transAdvice"/> 
+ </aop:config>
+	
+	</beans>

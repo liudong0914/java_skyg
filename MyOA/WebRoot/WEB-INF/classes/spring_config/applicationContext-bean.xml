@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   <!-- ===================================dao层========================================= -->
+	<bean id="baseDao" class="com.chen.dao.impl.BaseDaoImpl">
+		<!-- 为BaseDaoImpl的父类HibernteDaoSupport提供SessionFactory对象 -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sys(系统管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="userDao" class="com.chen.dao.impl.sys.UserDaoImpl" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="loginlogDao" class="com.chen.dao.impl.sys.LoginlogDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="leftMemuDao" class="com.chen.dao.impl.sys.LeftMemuDaoImpl">
+		<property name="sessionFactorys" ref="sessionFactory"></property>
+	</bean>
+	<bean id="workTimeDao" class="com.chen.dao.impl.sys.WorkTimeDaoImpl">
+		<property name="sessionFactorys" ref="sessionFactory"></property>
+	</bean>
+	<bean id="roleDao" class="com.chen.dao.impl.sys.RoleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="memuDao" class="com.chen.dao.impl.sys.MemuDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="operatelogDao" class="com.chen.dao.impl.sys.OperatelogDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~per(人事管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="machineDao" class="com.chen.dao.impl.per.MachineDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="deptDao" class="com.chen.dao.impl.per.DeptDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userstateDao" class="com.chen.dao.impl.per.UserstateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~calendar(日程管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="noteDao" class="com.chen.dao.impl.calendar.NoteDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="precontractDao" class="com.chen.dao.impl.calendar.PrecontractDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="meetingDao" class="com.chen.dao.impl.calendar.MeetingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="scheduleDao" class="com.chen.dao.impl.calendar.ScheduleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+		
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~file（文件管理）~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="fileDao" class="com.chen.dao.impl.file.FileDaoImpl">
+		<property name="sessionFactorys" ref="sessionFactory"></property>
+	</bean>
+	<bean id="fileTypeDao" class="com.chen.dao.impl.file.FileTypeDaoImpl">
+		<property name="sessionFactorys" ref="sessionFactory"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~attendance(考勤管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="manualSignDao" class="com.chen.dao.impl.attendance.ManualSignDaoImpl">
+		<property name="sessionFactorys" ref="sessionFactory"></property>
+		</bean>
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~message(信息传递)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+		<bean id="messageDao" class="com.chen.dao.impl.message.MessageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+		<bean id="messageTypeDao" class="com.chen.dao.impl.message.MessageTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="messagetouserDao" class="com.chen.dao.impl.message.MessagetouserDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--============================== service层=========================================-->
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~attendance(考勤管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="mss" class="com.chen.service.impl.attendance.ManualSignServiceImpl">
+		<property name="manualSignDao" ref="manualSignDao"></property>
+		<property name="worktimeDao" ref="workTimeDao"></property>
+	</bean>
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~file（文件管理）~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="fileService" class="com.chen.service.impl.file.FileServiceImpl">
+		<property name="fileDao" ref="fileDao"></property>
+	</bean>	
+	<bean id="fileTypeService" class="com.chen.service.impl.file.FileTypeServiceImpl">
+		<property name="fileTypeDao" ref="fileTypeDao"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sys(系统管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="userService" class="com.chen.service.impl.sys.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="loginlogService" class="com.chen.service.impl.sys.LoginlogServiceImpl">
+	<property name="loginlogDao" ref="loginlogDao"></property>
+	</bean>
+		<bean id="leftMemuService" class="com.chen.service.impl.sys.LeftMemuServiceImpl">
+		<property name="leftMemuDao" ref="leftMemuDao"></property>
+	</bean>
+			<bean id="roleService" class="com.chen.service.impl.sys.RoleServiceImpl">
+		<property name="roleDao" ref="roleDao"></property>
+	</bean>
+		<bean id="memuService" class="com.chen.service.impl.sys.MemuServiceImpl">
+		<property name="memuDao" ref="memuDao"></property>
+	</bean>
+	
+		<bean id="operatelogService" class="com.chen.service.impl.sys.OperateLogServiceImpl">
+		<property name="operatelogDao" ref="operatelogDao"></property>
+	</bean>
+	
+	<!--<bean id="roleSession" class="com.chen.service.impl.sys.RoleServiceImpl" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	-->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~per(人事管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="machineService" class="com.chen.service.impl.per.MachineServiceImpl">
+		<property name="machineDao" ref="machineDao"></property>
+	</bean>
+	<bean id="deptService" class="com.chen.service.impl.per.DeptServiceImpl">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean id="userstateService" class="com.chen.service.impl.per.UserstateServiceImpl">
+		<property name="userstateDao" ref="userstateDao"></property>
+	</bean>
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~calendar(文档管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->	
+	<bean id="noteService" class="com.chen.service.impl.calendar.NoteServiceImpl">
+		<property name="noteDao" ref="noteDao"></property>
+	</bean>
+	
+	<bean id="meetingService" class="com.chen.service.impl.calendar.MeetingServiceImpl">
+		<property name="meetingDao" ref="meetingDao"></property>
+	</bean>
+	
+	<bean id="scheduleService" class="com.chen.service.impl.calendar.ScheduleServiceImpl">
+		<property name="scheduleDao" ref="scheduleDao"></property>
+	</bean>
+	<bean id="precontractService" class="com.chen.service.impl.calendar.PrecontractServiceImpl">
+	<property name="precontractDao" ref="precontractDao" ></property>
+	</bean>
+		<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~message(消息传递)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->	
+		<bean id="messageService" class="com.chen.service.impl.message.MessageServiceImpl">
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+		<bean id="messageTypeService" class="com.chen.service.impl.message.MessageTypeServiceImpl">
+		<property name="messageTypeDao" ref="messageTypeDao"></property>
+	</bean>
+	<bean id="messagetouserService" class="com.chen.service.impl.message.MessagetouserServiceImpl">
+	<property name="messagetouserDao" ref="messagetouserDao"></property>
+	</bean>
+	
+	
+	<!--================================ action层========================================-->
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~attendance(考勤管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="manualSignAction" class="com.chen.action.attendance.ManualSignAction">
+		<property name="mss" ref="mss"></property>
+		<property name="leftMemuService" ref="leftMemuService"></property>
+		<property name="deptService" ref="deptService"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~file(文件管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="fileInfoAction" class="com.chen.action.file.FileInfoAction">
+		<property name="fileService" ref="fileService"></property>
+		<property name="fileTypeService" ref="fileTypeService"></property>
+		<property name="leftMemuService" ref="leftMemuService"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sys(系统管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="mainAction" class="com.chen.action.sys.MainAction">
+		<property name="userService" ref="userService"></property>
+	<property name="loginlogService" ref="loginlogService"></property>
+	</bean>
+	<bean id="modelAction" class="com.chen.action.sys.ModelAction">
+	<property name="scheduleService" ref="scheduleService"></property>
+		<property name="leftMemuService" ref="leftMemuService"></property>
+		<property name="memuService" ref="memuService"></property>
+		<property name="precontractService" ref="precontractService"></property>
+	</bean>
+		<bean id="roleAction" class="com.chen.action.sys.RoleAction">
+		<property name="roleService" ref="roleService"></property>
+        <property name="operatelogService" ref="operatelogService"></property>
+		<property name="memuService" ref="memuService"></property>
+	</bean>
+	
+		<bean id="loginLogAction" class="com.chen.action.sys.LoginlogAction">
+		<property name="loginlogService" ref="loginlogService"></property>
+	</bean>
+	<bean id="memuAction" class="com.chen.action.sys.MemuAction">
+	<property name="operatelogService" ref="operatelogService"></property>
+		<property name="memuService" ref="memuService"></property>
+	</bean>
+		<bean id="operatelogLogAction" class="com.chen.action.sys.OperatelogAction">
+		<property name="operatelogService" ref="operatelogService"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~per(人事管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="machineAction" class="com.chen.action.per.MachineAction">
+		<property name="machineService" ref="machineService"></property>
+	</bean>
+	<bean id="deptAction" class="com.chen.action.per.DeptAction">
+		<property name="deptService" ref="deptService"></property>
+	</bean>
+	<bean id="userAction" class="com.chen.action.per.UsersAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~calendar(日程管理)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+	<bean id="noteAction" class="com.chen.action.calendar.NoteAction">
+		<property name="noteService" ref="noteService"></property>
+	</bean>
+	<bean id="scheduleAction" class="com.chen.action.calendar.ScheduleAction">
+		<property name="scheduleService" ref="scheduleService"></property>
+	</bean>
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~message(消息传递)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+    <bean id="messageAction" class="com.chen.action.message.MessageAction">
+		<property name="messageService" ref="messageService"></property>
+		<property name="memuService" ref="memuService"></property>
+		<property name="operatelogService" ref="operatelogService"></property>
+		<property name="messageTypeService" ref="messageTypeService"></property>
+			<property name="machineService" ref="machineService"></property>
+			<property name="deptService" ref="deptService"></property>
+	</bean>
+	<bean id="emailAction" class="com.chen.action.message.EmailAction">
+	<property name="operatelogService" ref="operatelogService"></property>
+	<property name="userService" ref="userService"></property>
+	<property name="messageService" ref="messageService"></property>
+	<property name="messagetouserService" ref="messagetouserService"></property>
+	</bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~jfreechart(图形化)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+   <bean id="loginjfAction" class="com.chen.action.jfreechart.LoginjfAction">
+   <property name="loginlogService" ref="loginlogService"></property>
+   <property name="userService" ref="userService"></property>
+   </bean>
+
+
+</beans>
