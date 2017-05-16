@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class GoLogin extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
+	//ä¸‹é¢æ˜¯Actionå†…ç”¨äºå°è£…ç”¨æˆ·è¯·æ±‚å‚æ•°çš„å±æ€§
 	private String Type;
 	private String Username;
 	private String Password;
@@ -38,39 +38,39 @@ public class GoLogin extends ActionSupport {
 	public void setMsg(String msg) {
 		Msg = msg;
 	}
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	//å¤„ç†ç”¨æˆ·è¯·æ±‚çš„executeæ–¹æ³•
 	public String execute() throws Exception {
 		
 		
 		
-		if(Type.equals("ÏµÍ³¹ÜÀíÔ±"))
+		if(Type.equals("ç³»ç»Ÿç®¡ç†å‘˜"))
 		{
 			if (null == new AdminDao().CheckLogin(Username, Password)) {
-				Msg = "ÓÃ»§Ãû»òÕßÃÜÂë´íÎó";
+				Msg = "ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯";
 				return INPUT;
 			}
 			else
 			{
-				//»ñÈ¡ID
+				//è·å–ID
 				String Admin_ID=new AdminDao().CheckLogin(Username, Password);
-				//´´½¨session
+				//åˆ›å»ºsession
 				HttpSession session = ServletActionContext.getRequest().getSession();
 				session.setAttribute("id", Admin_ID);
 				session.setAttribute("type", "1");
 				return SUCCESS;
 			}
 		}
-		else if(Type.equals("Â¥Óî¹ÜÀíÔ±"))
+		else if(Type.equals("æ¥¼å®‡ç®¡ç†å‘˜"))
 		{
 			if (null == new TeacherDao().CheckLogin(Username, Password)) {
-				Msg = "ÓÃ»§Ãû»òÕßÃÜÂë´íÎó";
+				Msg = "ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯";
 				return INPUT;
 			}
 			else
 			{
-				//»ñÈ¡ID
+				//è·å–ID
 				String Teacher_ID=new TeacherDao().CheckLogin(Username, Password);
-				//´´½¨session
+				//åˆ›å»ºsession
 				HttpSession session = ServletActionContext.getRequest().getSession();
 				session.setAttribute("id", Teacher_ID);
 				session.setAttribute("type", "2");
@@ -78,17 +78,17 @@ public class GoLogin extends ActionSupport {
 				return SUCCESS;
 			}
 		}
-		else if(Type.equals("Ñ§Éú"))
+		else if(Type.equals("å­¦ç”Ÿ"))
 		{
 			if (null == new StudentDao().CheckLogin(Username, Password)) {
-				Msg = "ÓÃ»§Ãû»òÕßÃÜÂë´íÎó";
+				Msg = "ç”¨æˆ·åæˆ–è€…å¯†ç é”™è¯¯";
 				return INPUT;
 			}
 			else
 			{
-				//»ñÈ¡ID
+				//è·å–ID
 				String Student_ID=new StudentDao().CheckLogin(Username, Password);
-				//´´½¨session
+				//åˆ›å»ºsession
 				HttpSession session = ServletActionContext.getRequest().getSession();
 				session.setAttribute("id", Student_ID);
 				session.setAttribute("type", "3");
@@ -97,7 +97,7 @@ public class GoLogin extends ActionSupport {
 		}
 		else
 		{
-			Msg = "Éí·İÀàĞÍ´íÎó";
+			Msg = "èº«ä»½ç±»å‹é”™è¯¯";
 			return INPUT;
 		}
 		

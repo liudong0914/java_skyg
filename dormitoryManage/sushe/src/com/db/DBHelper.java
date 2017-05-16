@@ -5,10 +5,10 @@ import java.sql.*;
 public class DBHelper {	
 	private String dbUrl="jdbc:mysql://localhost:3306/sushe";
 	private String dbUser="root";
-	private String dbPassword="123456";
+	private String dbPassword="root";
 	private String jdbcName="com.mysql.jdbc.Driver";
 	
-	//Á¬½ÓÊý¾Ý¿â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
 	public Connection getConn(){
 		Connection conn = null;
 		try{
@@ -22,7 +22,7 @@ public class DBHelper {
 		return conn;		
 	}
 	
-//    ²âÊÔ
+//    ï¿½ï¿½ï¿½ï¿½
 	public static void main(String[] args)
 	{
 		System.out.println(new DBHelper().getConn());

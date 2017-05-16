@@ -13,7 +13,7 @@ import com.dao.*;
 
 public class TeacherUpdateSave extends ActionSupport {
 
-	//ÏÂÃæÊÇActionÄÚÓÃÓÚ·â×°ÓÃ»§ÇëÇó²ÎÊıµÄÊôĞÔ
+	//ä¸‹é¢æ˜¯Actionå†…ç”¨äºå°è£…ç”¨æˆ·è¯·æ±‚å‚æ•°çš„å±æ€§
 	private String Teacher_ID ;
     private String Teacher_Username ;
     private String Teacher_Password ;
@@ -68,32 +68,32 @@ public class TeacherUpdateSave extends ActionSupport {
 		Teacher_Tel = cookTel;
 	}
 
-	//´¦ÀíÓÃ»§ÇëÇóµÄexecute·½·¨
+	//å¤„ç†ç”¨æˆ·è¯·æ±‚çš„executeæ–¹æ³•
 	public String execute() throws Exception {
 		
-		//½â¾öÂÒÂë£¬ÓÃÓÚÒ³ÃæÊä³ö
+		//è§£å†³ä¹±ç ï¼Œç”¨äºé¡µé¢è¾“å‡º
 		HttpServletResponse response=null;
 		response=ServletActionContext.getResponse();
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		//´´½¨session¶ÔÏó
+		//åˆ›å»ºsessionå¯¹è±¡
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		//ÑéÖ¤ÊÇ·ñÕı³£µÇÂ¼
+		//éªŒè¯æ˜¯å¦æ­£å¸¸ç™»å½•
 		if(session.getAttribute("id")==null){
-			out.print("<script language='javascript'>alert('ÇëÖØĞÂµÇÂ¼£¡');window.location='Login.jsp';</script>");
+			out.print("<script language='javascript'>alert('è¯·é‡æ–°ç™»å½•ï¼');window.location='Login.jsp';</script>");
 			out.flush();out.close();return null;
 		}
 		
-		//²éÑ¯ÓÃ»§ÃûÊÇ·ñ´æÔÚ
+		//æŸ¥è¯¢ç”¨æˆ·åæ˜¯å¦å­˜åœ¨
 		List<TeacherBean> list=new TeacherDao().GetList("Teacher_Username='"+Teacher_Username+"' and Teacher_ID!="+Teacher_ID, "");
 		if(list.size()>0)
 		{
-			out.print("<script language='javascript'>alert('ÓÃ»§ÃûÒÑ¾­´æÔÚ£¡');history.back(-1);</script>");
+			out.print("<script language='javascript'>alert('ç”¨æˆ·åå·²ç»å­˜åœ¨ï¼');history.back(-1);</script>");
 			out.flush();out.close();return null;
 		}
-		//ĞŞ¸Ä
+		//ä¿®æ”¹
 		
 		TeacherBean cnbean=new TeacherBean();
 		cnbean=new TeacherDao().GetBean(Integer.parseInt(Teacher_ID));
@@ -107,18 +107,18 @@ public class TeacherUpdateSave extends ActionSupport {
 		}
 		new TeacherDao().Update(cnbean);
 		    
-		//Ìø×ª
-		out.print("<script language='javascript'>alert('ĞŞ¸Ä³É¹¦£¡');window.location='TeacherManager.action';</script>");
+		//è·³è½¬
+		out.print("<script language='javascript'>alert('ä¿®æ”¹æˆåŠŸï¼');window.location='TeacherManager.action';</script>");
 		out.flush();out.close();return null;
 		
 	}
 	
-	//ÅĞ¶ÏÊÇ·ñ¿ÕÖµ
+	//åˆ¤æ–­æ˜¯å¦ç©ºå€¼
 	private boolean isInvalid(String value) {
 		return (value == null || value.length() == 0);
 	}
 	
-	//²âÊÔ
+	//æµ‹è¯•
 	public static void main(String[] args) {
 		System.out.println();
 	}
