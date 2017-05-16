@@ -1,0 +1,246 @@
+TD {
+	FONT-SIZE: 12px
+}
+P {
+	FONT-SIZE: 12px
+}
+SELECT {
+	FONT-SIZE: 12px
+}
+INPUT {
+	FONT-SIZE: 12px
+}
+TEXTAREA {
+	FONT-SIZE: 12px
+}
+.f14 {
+	FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.l13 {
+	LINE-HEIGHT: 130%
+}
+.l15 {
+	LINE-HEIGHT: 170%
+}
+.a00 {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+.img01 {
+	BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; BORDER-TOP-COLOR: #000000; BORDER-RIGHT-COLOR: #000000
+}
+.in01 {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid
+}
+.f01 {
+	COLOR: #333333
+}
+.inp01 {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #ffffff 1px solid; BACKGROUND-COLOR: #a4d2e6
+}
+.inp02 {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #ffffff 1px solid; BACKGROUND-COLOR: #c9c7c7
+}
+A {
+	FONT-SIZE: 12px; COLOR: #0544a4; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000
+}
+.title0 {
+	FONT-WEIGHT: bold; FONT-SIZE: 17px; COLOR: #000000; FONT-FAMILY: arial; TEXT-DECORATION: none
+}
+A.title0:link {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+A.title0:visited {
+	FONT-SIZE: 12px; COLOR: #000000; TEXT-DECORATION: none
+}
+A.title0:active {
+	FONT-SIZE: 12px; COLOR: #0000ff; TEXT-DECORATION: none
+}
+A.title0:hover {
+	FONT-SIZE: 12px; COLOR: #0000ff; TEXT-DECORATION: none
+}
+A.title1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 17px; COLOR: #000000; FONT-FAMILY: arial; TEXT-DECORATION: none
+}
+A.title1:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 17px; COLOR: #000000; FONT-FAMILY: arial; TEXT-DECORATION: none
+}
+A.title2:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.title2:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.title2:active {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.title2:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.sinatail:link {
+	FONT-SIZE: 12px; COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A.sinatail:visited {
+	FONT-SIZE: 12px; COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A.sinatail:active {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.sinatail:hover {
+	FONT-SIZE: 12px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+.ft01 {
+	FONT-SIZE: 10px; COLOR: #9d9188
+}
+.ft02 {
+	FONT-SIZE: 14px; COLOR: #000071
+}
+A.path:link {
+	COLOR: #cccccc; TEXT-DECORATION: none
+}
+A.path:visited {
+	COLOR: #cccccc; TEXT-DECORATION: none
+}
+A.path:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.path:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.a01:link {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.a01:visited {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.a01:active {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.a01:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.a02:link {
+	FONT-WEIGHT: bold; COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.a02:visited {
+	FONT-WEIGHT: bold; COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.a02:active {
+	FONT-WEIGHT: bold; COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A.a02:hover {
+	FONT-WEIGHT: bold; COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A.a03:link {
+	COLOR: #00639a; TEXT-DECORATION: none
+}
+A.a03:visited {
+	COLOR: #00639a; TEXT-DECORATION: none
+}
+A.a03:active {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.a03:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.a04:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.a04:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.a04:active {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A.a04:hover {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A.a05:link {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A.a05:visited {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A.a05:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.a05:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.a06:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.a06:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.a06:active {
+	COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.a06:hover {
+	COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.a07:link {
+	COLOR: #ff9900; TEXT-DECORATION: none
+}
+A.a07:visited {
+	COLOR: #ff9900; TEXT-DECORATION: none
+}
+A.a07:active {
+	COLOR: #64b4d5; TEXT-DECORATION: none
+}
+A.a07:hover {
+	COLOR: #64b4d5; TEXT-DECORATION: none
+}
+A.a08:link {
+	COLOR: #00499c; TEXT-DECORATION: underline
+}
+A.a08:active {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.a08:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.a08:visited {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.t01 {
+	COLOR: #ffffff; size: 14.9px
+}
+.nl15 {
+	COLOR: #ffffff; LINE-HEIGHT: 170%
+}
+.nf01 {
+	COLOR: #990000
+}
+.nf02 {
+	COLOR: #333366
+}
+.nf03 {
+	COLOR: #666600
+}
+A.na01:link {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.na01:visited {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.na01:active {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.a03:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.na02:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.na02:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.na02:active {
+	COLOR: #0000aa; TEXT-DECORATION: underline
+}
+A.a03:hover {
+	COLOR: #0000aa; TEXT-DECORATION: underline
+}
